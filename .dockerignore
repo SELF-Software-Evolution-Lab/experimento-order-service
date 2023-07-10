@@ -1,0 +1,15 @@
+*.md
+.git
+.github
+.husky
+.env.example
+coverage
+dist
+docker
+docker*.yml
+logs
+node_modules
+npm-debug.log
+data
+helm-charts
+values

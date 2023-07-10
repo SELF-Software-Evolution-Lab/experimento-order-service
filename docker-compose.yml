@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  order-service:
+    user: "${USER_ID}:${GROUP_ID}"
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      target: development
+    container_name: order-service
+    environment:
+      PATH: /usr/src/app/node_modules/.bin:$PATH
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/src/app:cached
+    depends_on:
+      - order-service-db
+  order-service-db:
+    image: postgres:14
+    ports:
+      - 54320:5432
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres 
+      - POSTGRES_DATABASE=order-service
+    volumes:
+      - ./data/db:/var/lib/postgresql/data:delegated
+      - ./data/docker-postgresql-multiple-databases:/docker-entrypoint-initdb.d
+    container_name: order-service-db
