@@ -32,7 +32,7 @@
     "migrate:prod:db:run": "typeorm migration:run -f=./ormconfig.js",
     "migrate:prod:db:revert": "typeorm migration:revert -f=./ormconfig.js",
     "migrate:prod:run": "npm run migrate:prod:ct:run && npm run migrate:prod:db:run",
-    "deploy": "npm install && npm run build && npm run start:dev"
+    "deploy": "npm install && npm run start:dev"
   },
   "dependencies": {
     "@nestjs/common": "^9.4.3",
