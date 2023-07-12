@@ -5,6 +5,10 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node": "18.x",
+    "npm": "9.x"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -27,7 +31,8 @@
     "migrate:prod:db:show": "typeorm migration:show -f=./ormconfig.js",
     "migrate:prod:db:run": "typeorm migration:run -f=./ormconfig.js",
     "migrate:prod:db:revert": "typeorm migration:revert -f=./ormconfig.js",
-    "migrate:prod:run": "npm run migrate:prod:ct:run && npm run migrate:prod:db:run"
+    "migrate:prod:run": "npm run migrate:prod:ct:run && npm run migrate:prod:db:run",
+    "deploy": "npm install && npm run build && npm run start:dev"
   },
   "dependencies": {
     "@nestjs/common": "^9.4.3",

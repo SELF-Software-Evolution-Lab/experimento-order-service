@@ -12,7 +12,6 @@ ARG NPM_AUTH_TOKEN
 WORKDIR /usr/src/app
 ENV NODE_ENV production
 COPY ["package.json", "package-lock.json*", "./"]
-COPY .npmrc.example ./.npmrc
 RUN npm install --production
 
 FROM node:18-alpine AS production

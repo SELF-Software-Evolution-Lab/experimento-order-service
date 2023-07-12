@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: order-service
+  name: order-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order-service
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: order-service
+    spec:
+      containers:
+      - image: 880737545454.dkr.ecr.us-east-2.amazonaws.com/order-service:v1
+        name: webapp
+        imagePullPolicy: Always
+        resources: {}
+        ports:
+          - containerPort: 3080
+        env:
+          - name: LOG_LEVEL
+            value: info
+          - name: POSTGRES_HOST
+            value: order-service-db.cx1wusdjqryo.us-east-2.rds.amazonaws.com
+          - name: POSTGRES_PORT
+            value: '5432'
+          - name: POSTGRES_USERNAME
+            value: daytrader
+          - name: POSTGRES_PASSWORD
+            value: daytraderpassword
+          - name: POSTGRES_DATABASE
+            value: order-service-db
+          - name: AWS_REGION
+            value: us-east-2
+          - name: AWS_API_VERSION
+            value: 2012-11-05
+          - name: AWS_ACCESS_KEY_ID
+            value: AKIA42EAMNTXLI2KKCD4
+          - name: AWS_SECRET_ACCESS_KEY
+            value: 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
+          - name: AWS_SQS_URL
+            value: https://sqs.us-east-2.amazonaws.com/880737545454/order-service
+          - name: AWS_SNS_ORIGIN
+            value: arn:aws:sns:us-east-2:880737545454:orders 
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: order-service
+  labels:
+    run: order-service
+spec:
+  ports:
+  - port: 3080
+    protocol: TCP
+  selector:
+    app: order-service
+  type: LoadBalancer
