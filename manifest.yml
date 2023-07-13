@@ -28,7 +28,7 @@ spec:
           - name: LOG_LEVEL
             value: info
           - name: POSTGRES_HOST
-            value: order-service-db.cx1wusdjqryo.us-east-2.rds.amazonaws.com
+            value: postgres_host
           - name: POSTGRES_PORT
             value: '5432'
           - name: POSTGRES_USERNAME
@@ -42,13 +42,13 @@ spec:
           - name: AWS_API_VERSION
             value: 2012-11-05
           - name: AWS_ACCESS_KEY_ID
-            value: AKIA42EAMNTXLI2KKCD4
+            value: access_key
           - name: AWS_SECRET_ACCESS_KEY
-            value: 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
+            value: secret_key
           - name: AWS_SQS_URL
-            value: https://sqs.us-east-2.amazonaws.com/880737545454/order-service
+            value: sqs_url
           - name: AWS_SNS_ORIGIN
-            value: arn:aws:sns:us-east-2:880737545454:orders 
+            value: aws_sns_origin 
 status: {}
 
 ---
