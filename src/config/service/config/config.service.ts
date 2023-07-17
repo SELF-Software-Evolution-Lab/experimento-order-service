@@ -34,7 +34,9 @@ export class ConfigService {
   getAwsSecret(): string {
     return this.get('AWS_SECRET_ACCESS_KEY');
   }
-
+  getAwsSessionToken(): string {
+    return this.get('AWS_SESSION_TOKEN');
+  }
   getAwsSqsArn(): string {
     return this.get('AWS_SQS_URL');
   }

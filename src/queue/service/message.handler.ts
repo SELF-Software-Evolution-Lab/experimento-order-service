@@ -29,6 +29,7 @@ export class MessageHandler {
       accessKeyId: this.configService.getAwsAccessKey(),
       secretAccessKey: this.configService.getAwsSecret(),
       region: this.configService.getAwsRegion(),
+      sessionToken: this.configService.getAwsSessionToken(),
     });
 
     this.queueUrl = this.configService.getAwsSqsArn();
