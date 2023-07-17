@@ -19,6 +19,7 @@ export class ProducerService {
       credentials: {
         accessKeyId: configService.getAwsAccessKey(),
         secretAccessKey: configService.getAwsSecret(),
+        sessionToken: configService.getAwsSessionToken(),
       },
     });
     this.topicArn = configService.getAwsSnsOrigin();

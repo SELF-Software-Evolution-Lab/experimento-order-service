@@ -43,6 +43,9 @@ export class EnvironmentVariables {
   AWS_SECRET_ACCESS_KEY: string;
 
   @IsString()
+  AWS_SESSION_TOKEN: string;
+
+  @IsString()
   AWS_REGION: string;
 
   @IsString()
